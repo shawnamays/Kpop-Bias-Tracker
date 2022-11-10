@@ -1,12 +1,4 @@
-## Installation
-
-1. Clone repo
-2. run `npm install`
-
-## Usage
-
-1. run `node server.js`
-2. Navigate to `localhost:8080`
+[url=https://ibb.co/0M3ffgy][img]https://i.ibb.co/NjzLL82/Screen-Shot-2022-11-10-at-1-30-55-AM.png[/img][/url]
 
 ## Credit
 
