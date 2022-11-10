@@ -1,0 +1,280 @@
+<!doctype html>
+<html>
+
+<head>
+  <title>Korean Pop Artist Bias Tracker</title>
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.2/css/bootstrap.min.css">
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/font-awesome/4.0.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+
+  <!-- Font Awesome if you need it
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.2/css/all.css">
+  -->
+  <link rel="stylesheet" href="https://unpkg.com/tailwindcss@2.2.19/dist/tailwind.min.css"/>
+  <!--Replace with your tailwind.css once created-->
+  <link
+    href="https://unpkg.com/@tailwindcss/custom-forms/dist/custom-forms.min.css"
+    rel="stylesheet"
+  />
+  <!--Tailwind Custom Forms - use to standardise form fields - https://github.com/tailwindcss/custom-forms-->
+
+  
+</head>
+
+<body class="gradient leading-relaxed tracking-wide flex flex-col">
+  <!--Nav-->
+  <nav id="header" class="w-full z-30 top-0 text-white py-1 lg:py-6">
+    <div
+      class="w-full container mx-auto flex flex-wrap items-center justify-between mt-0 px-2 py-2 lg:py-6"
+    >
+      <div class="pl-4 flex items-center">
+        <a
+          class="text-white no-underline hover:no-underline font-bold text-2xl lg:text-4xl"
+          href="#"
+        >
+          <svg
+            class="h-6 w-6 inline-block fill-current text-yellow-700"
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 20 20"
+          >
+            <path d="M13 8V0L8.11 5.87 3 12h4v8L17 8h-4z" />
+          </svg>
+          K-Pop Bias Tracker
+        </a>
+      </div>
+
+      <div class="block lg:hidden pr-4">
+        <button
+          id="nav-toggle"
+          class="flex items-center px-3 py-2 border rounded text-gray-500 border-gray-600 hover:text-gray-800 hover:border-green-500 appearance-none focus:outline-none"
+        >
+          <svg
+            class="fill-current h-3 w-3"
+            viewBox="0 0 20 20"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <title>Menu</title>
+            <path d="M0 3h20v2H0V3zm0 6h20v2H0V9zm0 6h20v2H0v-2z" />
+          </svg>
+        </button>
+      </div>
+
+      <div
+        class="w-full flex-grow lg:flex lg:items-center lg:w-auto hidden lg:block mt-2 lg:mt-0 text-black p-4 lg:p-0 z-20"
+        id="nav-content"
+      >
+        <ul class="list-reset lg:flex justify-end flex-1 items-center">
+          <li class="mr-3">
+            <a
+              class="inline-block py-2 px-4 text-black font-bold no-underline"
+              href="#"
+              >Active</a
+            >
+          </li>
+          <li class="mr-3">
+            <a
+              class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="#"
+              >link</a
+            >
+          </li>
+          <li class="mr-3">
+            <a
+              class="inline-block text-black no-underline hover:text-gray-800 hover:text-underline py-2 px-4"
+              href="#"
+              >link</a
+            >
+          </li>
+        </ul>
+        <button
+          id="navAction"
+          class="mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded mt-4 lg:mt-0 py-4 px-8 shadow opacity-75"
+        >
+          Action
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <div class="container mx-auto h-screen">
+    <div class="text-center px-3 lg:px-0">
+      <h1
+        class="my-4 text-2xl md:text-3xl lg:text-5xl font-black leading-tight"
+      >
+        Keep track of your favorite biases and their groups
+      </h1>
+      <p
+        class="leading-normal text-gray-800 text-base md:text-xl lg:text-2xl mb-8"
+      >
+        Never forget your faves again!
+      </p>
+
+      <button class="bg-white mx-auto lg:mx-0 hover:underline text-gray-800 font-extrabold rounded my-2 md:my-6 py-4 px-8 shadow-lg w-48"><a href="/signup">
+        Sign Up Now!
+      </a> </button>
+      
+    </div>
+
+    <div class="flex items-center w-full mx-auto content-end formContainer" >
+      <div class="browser-mockup flex flex-1 m-6 md:px-0 md:m-12 bg-white w-1/2 rounded shadow-xl">
+
+        <div class="biggerSection">
+         
+          <form action="/kpopGroups" method="POST">
+  
+            <input type="text" id="artist" placeholder="enter an artist" name="name">
+  
+            <input type="text" id="group" placeholder="enter the group name" name="groupName">
+            <button type="submit">Add My Bias!</button>
+          </form>
+  
+          <div>
+            <ul class="displaySection">
+              <% if (groupData) { %>
+                <% groupData.forEach(data=> { %>
+  
+                  <li class="displaySectionList flex justify-around">
+                  
+                    <p>
+                      <%= data.name %>
+                    </p>
+                    <p>
+                      <%= data.groupName %>
+                    </p>
+  <button class="fa-trash-o">delete</button>
+                  </li>
+                  <% } ) %>
+                    <% } %>
+  
+            </ul>
+          </div>
+  
+  
+        </div></div>
+        <div class="videoContainer"><iframe frameborder="0" scrolling="no" marginheight="0" marginwidth="0"width="788.54" height="443" type="text/html" src="https://www.youtube.com/embed/3P-wT723kYs?autoplay=0&fs=0&iv_load_policy=3&showinfo=0&rel=0&cc_load_policy=0&start=0&end=0&origin=https://youtubeembedcode.com"><div><small><a href="https://youtubeembedcode.com/nl/">youtubeembedcode.com/nl/</a></small></div><div><small><a href="https://mgacasinoutansvensklicens.se/">casino med mga licens</a></small></div><div><small><a href="https://youtubeembedcode.com/es/">youtubeembedcode es</a></small></div><div><small><a href="https://unoregler.com/da/">regler uno</a></small></div></iframe>
+        <br>
+        <p class="videoTitle">"Drive" by Bang Chan & Lee Know of the group Stray Kids, often abbreviated as "skz".  Try entering "Bang Chan" for artist, and "skz" for group, then enter "Lee Know" for artist, and "skz" for group.  Hey, look at that! You've started your very first bias list!</p>
+      </div>
+    </div>
+  </div>
+
+  
+
+  
+
+ 
+
+  
+
+  
+
+  <!--Footer-->
+ 
+
+  <script>
+    /*Toggle dropdown list*/
+    /*https://gist.github.com/slavapas/593e8e50cf4cc16ac972afcbad4f70c8*/
+
+    var navMenuDiv = document.getElementById("nav-content");
+    var navMenu = document.getElementById("nav-toggle");
+
+    document.onclick = check;
+    function check(e) {
+      var target = (e && e.target) || (event && event.srcElement);
+
+      //Nav Menu
+      if (!checkParent(target, navMenuDiv)) {
+        // click NOT on the menu
+        if (checkParent(target, navMenu)) {
+          // click on the link
+          if (navMenuDiv.classList.contains("hidden")) {
+            navMenuDiv.classList.remove("hidden");
+          } else {
+            navMenuDiv.classList.add("hidden");
+          }
+        } else {
+          // click both outside link and outside menu, hide menu
+          navMenuDiv.classList.add("hidden");
+        }
+      }
+    }
+    function checkParent(t, elm) {
+      while (t.parentNode) {
+        if (t == elm) {
+          return true;
+        }
+        t = t.parentNode;
+      }
+      return false;
+    }
+  </script>
+</body>
+  <!-- <div class="container">
+
+    <div class="page-header text-center">
+      <h1><span class="fa fa-anchor"></span> Home Page</h1>
+      <a href="/logout" class="btn btn-default btn-sm">Logout</a>
+    </div>
+
+
+   
+      </div>
+
+
+
+
+
+      <div>
+        <h2>Welcome to K-Pop! We're happy to have you.
+          I'll Help You Keep Track Of Your Biases By Group.
+        </h2>
+        <form action="/kpopGroups" method="POST">
+
+          <input type="text" id="artist" placeholder="enter an artist" name="name">
+
+          <input type="text" id="group" placeholder="enter the group name" name="groupName">
+          <button type="submit">Add My Bias!</button>
+        </form>
+
+        <div>
+          <ul class="displaySection">
+            <% if (groupData) { %>
+              <% groupData.forEach(data=> { %>
+
+                <li class="displaySectionList">
+                
+                  <p>
+                    <%= data.name %>
+                  </p>
+                  <p>
+                    <%= data.groupName %>
+                  </p>
+<button class="fa-trash-o">delete</button>
+                </li>
+                <% } ) %>
+                  <% } %>
+
+          </ul>
+        </div>
+
+
+      </div>
+
+      <!--I want some kind of logic here that says IF the new user input of groupName is equal to another 
+      database entry of groupname, THEN put them in the same area.  ELSE, create a new area for a new group-->
+
+
+
+
+
+    </div>
+
+    <script src="main.js"></script>
+
+</body> -->
+
+</html>
